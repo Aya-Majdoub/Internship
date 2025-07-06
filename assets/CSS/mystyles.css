@@ -1,0 +1,81 @@
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 10;
+    padding: 10;
+}
+
+h1 {
+    text-align: center;
+    font-family: cursive;
+    color: rgb(73, 27, 94);
+    background-color: #F5C4CA;
+    border-radius: 2px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.26);
+    height: 5rem;
+    padding: 2rem;
+}
+
+.mycontainer {
+    margin: 2rem auto;
+    margin-bottom: 2rem;
+    
+}
+
+#desc{
+    background-color: blueviolet;
+    margin: 10px;
+    padding: 10px;
+}
+
+img{
+    float: left;
+    margin: 10px;
+}
+
+#wrkshp1{
+    margin: 2rem;
+    margin-bottom: 2rem;
+    padding: 4px 4px;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px black;
+}
+
+#wrkshp1{
+    margin: 2rem;
+    margin-bottom: 2rem;
+    padding: 4px 4px;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px black;
+}
+
+#wrkshp1{
+    margin: 2rem;
+    margin-bottom: 2rem;
+    padding: 4px 4px;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px black;
+}
+
+.carousel-item .card {
+  margin: 0 10px;
+}
+
+.carousel-inner {
+  padding: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Make them visible */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
