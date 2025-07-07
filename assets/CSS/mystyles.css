@@ -8,60 +8,44 @@ body{
 
 h1 {
     text-align: center;
-    font-family: cursive;
-    color: rgb(73, 27, 94);
-    background-color: #F5C4CA;
+    color: rgb(218, 230, 237);
+    background-color: #8c4e4e;
     border-radius: 2px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.26);
-    height: 5rem;
+    height: 6rem;
     padding: 2rem;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 .mycontainer {
     margin: 2rem auto;
     margin-bottom: 2rem;
-    
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
-#desc{
-    background-color: blueviolet;
-    margin: 10px;
-    padding: 10px;
+.desc {
+  background-color: rgb(255, 191, 161);
+  margin: 10px;
+  padding: 10px;
+  float: left;
+  border-radius: 2cqmin;
+
+  /*width: calc(100% - 240px); /* adjust width to leave room for image */
 }
+
 
 img{
-    float: left;
-    margin: 10px;
+    border-radius: 15%;
 }
 
-#wrkshp1{
-    margin: 2rem;
-    margin-bottom: 2rem;
-    padding: 4px 4px;
-    width: 100px;
-    height: 150px;
-    border-radius: 3px;
-    box-shadow: 0 2px 8px black;
-}
-
-#wrkshp1{
-    margin: 2rem;
-    margin-bottom: 2rem;
-    padding: 4px 4px;
-    width: 100px;
-    height: 150px;
-    border-radius: 3px;
-    box-shadow: 0 2px 8px black;
-}
-
-#wrkshp1{
-    margin: 2rem;
-    margin-bottom: 2rem;
-    padding: 4px 4px;
-    width: 100px;
-    height: 150px;
-    border-radius: 3px;
-    box-shadow: 0 2px 8px black;
+#firstimg {
+  float: right;
+  width: 300px;
+  border-radius: 10cm;
 }
 
 .carousel-item .card {
@@ -74,8 +58,9 @@ img{
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5); /* Make them visible */
+  background-color: rgba(71, 12, 12, 0.5); 
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
+
