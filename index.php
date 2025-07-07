@@ -36,7 +36,7 @@
                                 <h5 class="card-title text-danger">Theater</h5>
                                 <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
 
-                                <a href="" class="btn btn-danger">Register</a>
+                                <a href="atelier1.php" class="btn btn-danger">Register</a>
                             </div>
                         </div>
                     </div>

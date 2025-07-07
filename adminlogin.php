@@ -9,9 +9,15 @@
         $sql = "SELECT * FROM admin WHERE admin_email = '$email'";
         $result = mysqli_query($conn, $sql);
 
-        
         $row = mysqli_fetch_assoc($result);
-        if ($row && $row ["ad_password"] == $password){
+
+        $_SESSION["admin_ID"] = $row["admin_ID"];
+        if(empty($password) || empty($email)){
+            $_SESSION['error'] = "Please enter your email and password.";
+            header("Location: adminlogin.php");
+            exit();
+        }
+        else if ($row && $row ["ad_password"] == $password){
             header("Location: adminpage.php");
             exit();
         }
@@ -24,6 +30,8 @@
 
     mysqli_close($conn);
 ?>
+
+<!-- https://docs.google.com/forms/d/e/1FAIpQLSfj6gpcWheYjO9x36ZYe3UrhgoLUbPm1ynvetfqVn82c4HFTA/viewform -->
 
 <!DOCTYPE html>
 <html lang="en">

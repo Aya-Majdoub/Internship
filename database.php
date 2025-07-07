@@ -2,11 +2,15 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "workshopdb";
+    $db_name = "worshopdb";
     //$conn = "";
 
     $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
-    
+    if(!$conn){
+       die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "ALTER TABLE users MODIFY user_ID INT AUTO_INCREMENT";
     /*try{
         $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
     }
@@ -14,10 +18,7 @@
         echo "Couldn't connect :(";
     }
     
-
-    if($conn){
-        echo "You are connected!";
-    }*/
+    */
 
 
 ?>
