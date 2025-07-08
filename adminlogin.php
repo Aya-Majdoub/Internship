@@ -6,18 +6,18 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM admin WHERE admin_email = '$email'";
+        $sql = "SELECT * FROM users WHERE status = 'admin' AND user_email = '$email'";
         $result = mysqli_query($conn, $sql);
 
-        $row = mysqli_fetch_assoc($result);
-
-        $_SESSION["admin_ID"] = $row["admin_ID"];
+        $row = mysqli_fetch_assoc($result); 
+        $hashedpass = $row["password"];
+        $_SESSION["admin_ID"] = $row["user_ID"];
         if(empty($password) || empty($email)){
             $_SESSION['error'] = "Please enter your email and password.";
             header("Location: adminlogin.php");
             exit();
         }
-        else if ($row && $row ["ad_password"] == $password){
+        else if (password_verify($password, $hashedpass)){
             header("Location: adminpage.php");
             exit();
         }

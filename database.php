@@ -1,7 +1,7 @@
 <?php
     $db_server = "localhost";
     $db_user = "root";
-    $db_pass = "";
+    $db_pass = "dbpass@wrkshp2025";
     $db_name = "worshopdb";
     //$conn = "";
 
@@ -10,7 +10,15 @@
        die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "ALTER TABLE users MODIFY user_ID INT AUTO_INCREMENT";
+    $password = "adpass1";
+    $hashedpass = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "UPDATE users SET password = (?) WHERE username = 'admin1'";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $hashedpass);
+    $stmt->execute();
+    
     /*try{
         $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
     }

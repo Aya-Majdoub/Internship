@@ -8,11 +8,11 @@
     }
 
     $admin_ID = $_SESSION["admin_ID"];
-    $sql = "SELECT * FROM admin WHERE admin_ID = '$admin_ID'";
+    $sql = "SELECT * FROM users WHERE user_ID = '$admin_ID'";
     $result = mysqli_query($conn, $sql);
     $admin = mysqli_fetch_assoc($result);
 
-    $sql2 = "SELECT * FROM workshop w LEFT JOIN admin a ON a.admin_ID = w.admin_ID WHERE w.admin_ID = '$admin_ID'";
+    $sql2 = "SELECT * FROM workshop w LEFT JOIN users u ON u.user_ID = w.user_ID WHERE w.user_ID = '$admin_ID'";
     $result2 = mysqli_query($conn, $sql2);
 ?>
 
@@ -34,7 +34,7 @@
     <h1>Admin profile</h1>
 
     <p>
-        <?php echo $admin["admin_name"]; ?>
+        <?php echo $admin["username"]; ?>
     </p>
     <ul>
         <?php $info = mysqli_fetch_assoc($result2); ?>
