@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 04 juil. 2025 à 16:05
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jul 10, 2025 at 02:58 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,36 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `worshopdb`
+-- Database: `workshopdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
---
-
-CREATE TABLE `admin` (
-  `admin_ID` int(11) NOT NULL,
-  `admin_name` varchar(255) DEFAULT NULL,
-  `admin_email` varchar(255) DEFAULT NULL,
-  `phone_no` varchar(255) DEFAULT NULL,
-  `ad_password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `admin`
---
-
-INSERT INTO `admin` (`admin_ID`, `admin_name`, `admin_email`, `phone_no`, `ad_password`) VALUES
-(1, 'admin1', 'admin1@example.com', '0611111111', 'password1'),
-(2, 'admin2\r\n', 'admin2@example.com', '0622222222', 'password2'),
-(3, 'admin3', 'admin3@example.com', '0633333333', 'password3');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `registration`
+-- Table structure for table `registration`
 --
 
 CREATE TABLE `registration` (
@@ -58,7 +35,7 @@ CREATE TABLE `registration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `registration`
+-- Dumping data for table `registration`
 --
 
 INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `workshop_ID`) VALUES
@@ -69,28 +46,32 @@ INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `user_ID` int(11) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
-  `user_email` varchar(255) DEFAULT NULL
+  `user_email` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `usrpassword` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_ID`, `username`, `user_email`) VALUES
-(11, 'username1', 'user1@example.com'),
-(22, 'username2', 'user2@example.com\r\n'),
-(33, 'username3', 'user3@example.com');
+INSERT INTO `users` (`user_ID`, `username`, `user_email`, `status`, `usrpassword`) VALUES
+(1, 'admin1', 'admin1@gmail.com', 'admin', NULL),
+(11, 'username1', 'user1@example.com', NULL, NULL),
+(22, 'username2', 'user2@example.com\r\n', NULL, NULL),
+(33, 'username3', 'user3@example.com', NULL, NULL),
+(34, 'admin2', 'admin2@gmail.com', 'admin', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `workshop`
+-- Table structure for table `workshop`
 --
 
 CREATE TABLE `workshop` (
@@ -107,7 +88,7 @@ CREATE TABLE `workshop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `workshop`
+-- Dumping data for table `workshop`
 --
 
 INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `end_time`, `description`, `location`, `capacity`, `admin_ID`, `category`) VALUES
@@ -116,18 +97,11 @@ INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `
 (333, 'workshop sample 3', '2025-07-11', '13:00:00', '14:00:00', 'This is description for workshop 3', 'room 3', 10, 3, 'music');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_ID`),
-  ADD UNIQUE KEY `admin_email` (`admin_email`);
-
---
--- Index pour la table `registration`
+-- Indexes for table `registration`
 --
 ALTER TABLE `registration`
   ADD PRIMARY KEY (`registration_ID`),
@@ -135,35 +109,39 @@ ALTER TABLE `registration`
   ADD KEY `workshop_ID` (`workshop_ID`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_ID`),
   ADD UNIQUE KEY `user_email` (`user_email`);
 
 --
--- Index pour la table `workshop`
+-- Indexes for table `workshop`
 --
 ALTER TABLE `workshop`
   ADD PRIMARY KEY (`workshop_ID`),
   ADD KEY `admin_ID` (`admin_ID`);
 
 --
--- Contraintes pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Contraintes pour la table `registration`
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `registration`
 --
 ALTER TABLE `registration`
   ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`),
   ADD CONSTRAINT `registration_ibfk_2` FOREIGN KEY (`workshop_ID`) REFERENCES `workshop` (`workshop_ID`);
-
---
--- Contraintes pour la table `workshop`
---
-ALTER TABLE `workshop`
-  ADD CONSTRAINT `workshop_ibfk_1` FOREIGN KEY (`admin_ID`) REFERENCES `admin` (`admin_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,7 +2,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "dbpass@wrkshp2025";
-    $db_name = "worshopdb";
+    $db_name = "workshopdb";
     //$conn = "";
 
     $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
@@ -10,10 +10,10 @@
        die("Connection failed: " . mysqli_connect_error());
     }
 
-    $password = "adpass1";
+    $password = "adpass2";
     $hashedpass = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "UPDATE users SET password = (?) WHERE username = 'admin1'";
+    $query = "UPDATE users SET usrpassword = (?) WHERE username = 'admin2'";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $hashedpass);
