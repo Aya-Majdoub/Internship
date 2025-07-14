@@ -48,3 +48,48 @@ img{
   border-radius: 10cm;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;                 
+  height: 100%;              
+  top: 0;
+  bottom: 0;
+  opacity: 1;
+  z-index: 1;               
+  background: none;          
+  pointer-events: auto;      
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(245, 107, 89, 0.5);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-size: 100% 100%;
+}
+
+.carousel {
+  max-width: 900px; 
+  margin: 2rem auto;
+  position: relative;
+}
+
+.carousel-inner {
+  max-height: 100rem; 
+  overflow: hidden;
+}
+
+.card-checkbox {
+  display: none;
+}
+
+.card-selectable {
+  border: 2px solid transparent;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.card-checkbox:checked ~ .card-selectable {
+  border: 2px solid #dc3545;
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}

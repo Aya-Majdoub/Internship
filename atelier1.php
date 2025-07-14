@@ -5,9 +5,6 @@
     $sql = "SELECT * FROM workshop WHERE workshop_ID = 111";
     $result = mysqli_query($conn, $sql);
 
-    $sql2 = "SELECT * FROM admin a LEFT JOIN workshop w ON a.admin_ID = w.admin_ID WHERE workshop_ID = 111";
-    $result2 = mysqli_query($conn, $sql2);
-
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = $_POST["username"];
         $email = $_POST["email"];
@@ -113,6 +110,7 @@
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
     <!-- javascript -->
     <script src = "assets/JavaScript/main.js"></script>
+
 
 </body>
 </html>
