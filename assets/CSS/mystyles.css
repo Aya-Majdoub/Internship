@@ -39,28 +39,12 @@ h1 {
 
 
 img{
-    border-radius: 15%;
+  border-radius: 15%;
 }
 
 #firstimg {
   float: right;
   width: 300px;
   border-radius: 10cm;
-}
-
-.carousel-item .card {
-  margin: 0 10px;
-}
-
-.carousel-inner {
-  padding: 10px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(71, 12, 12, 0.5); 
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 

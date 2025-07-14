@@ -15,131 +15,109 @@
     
     <h1>Our workshops</h1>
 
-    <div class = "container mycontainer">
-        <div class="col justify-self-end"><img id="firstimg" src="assets/images/Ashley Buzzy.jfif" width = "125px"></div>
-        <div class = "desc">
-            
-            <div class="col justify-self-start"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum velit maxime at voluptate tempora dignissimos neque nihil explicabo labore aliquam eius, magnam quae odit, voluptatibus necessitatibus deserunt reprehenderit ipsum aspernatur.</p></div>
-        </div>
+    <div class="container desc">
+
+        <form class="w-75" action="adminlogin.php" method="post">
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input class="form-control" type="text" placeholder="Full name" name="name">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" placeholder="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label><br>
+                <label>
+                    <input type="checkbox" name="status"> Student
+                </label>
+                <label>
+                    <input type="checkbox" name="status"> Employee
+                </label>
+                <label>
+                    <input type="checkbox" name="status"> Autre
+                </label>
+            </div>
+
+            <br>
+        </form>
+
     </div>
+
+
     
     <div id = "c1" class = "carousel slide">
         <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <div class="row">
+                <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class = "card" style="width: 18rem";>
-                            <img class = "card-img-top" src = "assets/images/75d9c6b62d4d928cb1670b91cb146e91.jpg" alt="Theater">
+                        <div class = "card" style="width: 20rem";>
+                            <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
 
                             <div class="card-body">
-                                <h5 class="card-title text-danger">Theater</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
+                                <h5 class="card-title text-danger">Art of transformation</h5>
+                                <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA)</p>
 
                                 <a href="atelier1.php" class="btn btn-danger">Register</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card" style="width: 18rem";>
-
-                        <img class = "card-img-top" src = "assets/images/musicwrkshp.jpg" alt="Music">
-
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Music</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
-
-                                <a href="" class="btn btn-danger">Register</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class = "card" style="width: 18rem";>
-                            <img class = "card-img-top" src = "assets/images/writing.jpg" alt="Writing & direction" style="width: 18rem";>
-
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Writing & direction</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
-
-                                <a href="" class="btn btn-danger">Register</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card" style="width: 18rem";>
-
-                        <img class = "card-img-top" src = "assets/images/singing.jpg" alt="Vocal training" style="width: 18rem";>
-
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Vocal training</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
-
-                                <a href="" class="btn btn-danger">Register</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+
             <div class="carousel-item">
-                <div class="row">
+                <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class = "card" style="width: 18rem";>
-                            <img class = "card-img-top" src = "assets/images/paintingwrkshp.jpg" alt="Painting">
+                            <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
 
                             <div class="card-body">
-                                <h5 class="card-title text-danger">Painting</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
+                                <h5 class="card-title text-danger">Le masque et le corps du personnage</h5>
+                                <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy)</p>
 
                                 <a href="" class="btn btn-danger">Register</a>
                             </div>
                         </div>
                     </div>
+                </div>    
+            </div>
 
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card" style="width: 18rem";>
-                            <img class = "card-img-top" src = "assets/images/digital art.jpg" alt="digital art">
-
-                            <div class="card-body">
-                                <h5 class="card-title text-danger">Digital art</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
-
-                                <a href="" class="btn btn-danger">Register</a>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="carousel-item">
+                <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class = "card" style="width: 18rem";>
-                            <img class = "card-img-top" src = "assets/images/calligraphy.jpg" alt="Calligraphy" style="width: 18rem";>
+                            <img class = "card-img-top" src = "assets/images/philippe mertz.jfif" alt="">
 
                             <div class="card-body">
-                                <h5 class="card-title text-danger">Calligraphy</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
+                                <h5 class="card-title text-danger">Le voyage du personnage</h5>
+                                <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France)</p>
 
                                 <a href="" class="btn btn-danger">Register</a>
                             </div>
                         </div>
                     </div>
+                </div>    
+            </div>
 
+            <div class="carousel-item">
+                <div class="row justify-content-around">
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card" style="width: 18rem";>
-
-                        <img class = "card-img-top" src = "assets/images/history.jpg" alt="History" style="width: 18rem";>
+                        <div class = "card" style="width: 18rem";>
+                            <img class = "card-img-top" src = "assets/images/paintingwrkshp.jpg" alt="">
 
                             <div class="card-body">
-                                <h5 class="card-title text-danger">History</h5>
-                                <p class="card-text text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eveniet non quasi officiis? Architecto accusantium sequi, magnam magni soluta maxime veniam, odio quam obcaecati asperiores minima necessitatibus vitae natus a.</p>
+                                <h5 class="card-title text-danger">Meinser Technique for Scene Development</h5>
+                                <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia)</p>
 
                                 <a href="" class="btn btn-danger">Register</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                    
+                </div>    
             </div>
             
 
@@ -156,6 +134,8 @@
         </button> 
 
     </div>
+
+    <button class="btn btn-danger" type="submit">Submit</button>
     
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
