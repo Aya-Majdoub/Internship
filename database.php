@@ -1,7 +1,7 @@
 <?php
     $db_server = "localhost";
     $db_user = "root";
-    $db_pass = "";
+    $db_pass = "dbpass@wrkshp2025";
     $db_name = "worshopdb";
     //$conn = "";
 
@@ -19,7 +19,7 @@
     mysqli_query($conn, $sql2);
     mysqli_query($conn, $sql3);
     mysqli_query($conn, $sql4);
-
+    
     /*try{
         $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
     }

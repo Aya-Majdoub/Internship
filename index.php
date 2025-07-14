@@ -8,11 +8,27 @@
         $name = $_POST["name"];
         $email = $_POST["email"];
         $status = $_POST["status"];
-        $workshop = isset($_POST["selected_card"]) ? $_POST["selected_card"] : "";
-        $workshop_str = implode(", ", $workshop);
+        $workshop = $_POST["selected_card"];
+        $part = "Participant";
+        //$workshop_str = implode(", ", $workshop);
+
+        if($workshop == "Art of transformation"){
+            $wrkshp_ID = 4;
+        }
+        elseif($workshop == "Le masque et le corps du personnage"){
+            $wrkshp_ID = 5;
+        }
+        elseif($workshop == "Le voyage du personnage"){
+            $wrkshp_ID = 6;
+        }
+        elseif($workshop == "Art of transformation"){
+            $wrkshp_ID = 7;
+        }
 
         $check = "SELECT * FROM users WHERE user_email = '$email'";
         $checking = mysqli_query($conn, $check);
+
+        $now = date('Y-m-d'); 
 
         if(empty($name) || empty($email) || empty($status)){
             $_SESSION["message"] = "Please fill in all fields.";
@@ -25,18 +41,30 @@
             exit();
         }
         else {
-            $sql = "INSERT INTO users (username, user_email, status) VALUES (?, ?, ?);
-                    INSERT INTO registration (registration_date, user_ID, par_status) ";
+            $sql = "INSERT INTO users (username, user_email, status) VALUES (?, ?, ?)";
             $stmt = mysqli_prepare($conn, $sql);
-            if($stmt){
-               $stmt->bind_param("sss", $name, $email, $status); 
+
+            
+
+            $query = "INSERT INTO registration (registration_date, user_ID, workshop_ID, par_status) VALUES (?, ?, ?, ?)";
+            $stmt2 = mysqli_prepare($conn, $query);
+            
+
+            if($stmt && $stmt2){
+               $stmt->bind_param("sss", $name, $email, $part); 
                $stmt->execute();
+               $user_id = mysqli_insert_id($conn);
                $stmt->close();
+
+               $stmt2->bind_param("siis", $now, $user_id, $wrkshp_ID, $status); 
+               $stmt2->execute();
+               $stmt2->close();
 
                $_SESSION["message"] = "Registered successfully!";
                header("Location: index.php?success=1");
                exit();
             }
+            
         }
     }
 
@@ -104,6 +132,105 @@
 
             <br>
 
+            <div class="container">
+                <div id = "c1" class = "carousel slide">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <input type="checkbox" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
+                                    <div class = "card card-selectable" style="width: 20rem; height: 50rem";>
+                                        <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Art of transformation</h5>
+                                            <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA)</p>
+                                            <label for="select1">
+                                                <span class="btn btn-danger">Select</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <input type="checkbox" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
+                                    <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                        <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Le masque et le corps du personnage</h5>
+                                            <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy)</p>
+
+                                            <label for="select2">
+                                                <span class="btn btn-danger">Select</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <input type="checkbox" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
+                                    <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                        <img class = "card-img-top" src = "assets/images/philippe mertz.jfif" alt="">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Le voyage du personnage</h5>
+                                            <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France)</p>
+
+                                            <label for="select3">
+                                                <span class="btn btn-danger">Select</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-sm-6 col-md-3">
+                                    <input type="checkbox" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
+                                    <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                        <img class = "card-img-top" src = "assets/images/paintingwrkshp.jpg" alt="">
+
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">Meinser Technique for Scene Development</h5>
+                                            <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia)</p>
+
+                                            <label for="select4">
+                                                <span class="btn btn-danger">Select</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#c1" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#c1" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button> 
+
+                </div>
+
+            </div>
+
             <button class="btn btn-danger" type="submit">Submit</button>
 
             <?php if (!empty($message) && ($message != "Registered successfully!")): ?>
@@ -122,111 +249,14 @@
                 </div>
             <?php endif; ?>
 
-            
-
         </form>
 
     </div>
 
 
-    <div class="container">
-        <div id = "c1" class = "carousel slide">
-            <div class="carousel-inner">
+    
 
-                <div class="carousel-item active">
-                    <div class="row justify-content-around">
-                        <div class="col-12 col-sm-6 col-md-3">
-                            <input type="checkbox" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
-                            <div class = "card card-selectable" style="width: 20rem; height: 50rem";>
-                                <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title text-danger">Art of transformation</h5>
-                                    <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA)</p>
-                                    <label for="select1">
-                                        <span class="btn btn-danger">Select</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row justify-content-around">
-                        <div class="col-12 col-sm-6 col-md-3">
-                            <input type="checkbox" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
-                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-danger">Le masque et le corps du personnage</h5>
-                                    <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy)</p>
-
-                                    <label for="select2">
-                                        <span class="btn btn-danger">Select</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row justify-content-around">
-                        <div class="col-12 col-sm-6 col-md-3">
-                            <input type="checkbox" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
-                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                <img class = "card-img-top" src = "assets/images/philippe mertz.jfif" alt="">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-danger">Le voyage du personnage</h5>
-                                    <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France)</p>
-
-                                    <label for="select3">
-                                        <span class="btn btn-danger">Select</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row justify-content-around">
-                        <div class="col-12 col-sm-6 col-md-3">
-                            <input type="checkbox" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
-                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                <img class = "card-img-top" src = "assets/images/paintingwrkshp.jpg" alt="">
-
-                                <div class="card-body">
-                                    <h5 class="card-title text-danger">Meinser Technique for Scene Development</h5>
-                                    <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia)</p>
-
-                                    <label for="select4">
-                                        <span class="btn btn-danger">Select</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                </div>
-                
-
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#c1" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#c1" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
-            </button> 
-
-        </div>
-
-    </div>
+    
     
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
