@@ -118,7 +118,7 @@
                 }
             ?>
             
-            <form class="w-75" action="index.php" method="post">
+            <form class="w-50" action="index.php" method="post">
                 <div class="row d-flex align-items-center">
                     <div class="col">
                         <div class="form-group">

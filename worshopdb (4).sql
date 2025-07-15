@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2025 at 01:38 AM
+-- Generation Time: Jul 15, 2025 at 04:23 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,15 +32,22 @@ CREATE TABLE `registration` (
   `registration_date` date DEFAULT NULL,
   `user_ID` int(11) DEFAULT NULL,
   `workshop_ID` int(11) DEFAULT NULL,
-  `par_status` varchar(255) DEFAULT NULL
+  `par_status` varchar(255) DEFAULT NULL,
+  `expectations` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `workshop_ID`, `par_status`) VALUES
-(3336, '2025-07-15', 47, 4, 'other');
+INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `workshop_ID`, `par_status`, `expectations`) VALUES
+(3336, '2025-07-15', 47, 4, 'other', NULL),
+(3337, '2025-07-15', 48, 5, 'student', NULL),
+(3338, '2025-07-15', 49, 6, 'employee', NULL),
+(3340, '2025-07-15', 51, 4, 'employee', NULL),
+(3341, '2025-07-15', 52, 4, 'student', NULL),
+(3342, '2025-07-15', 53, 4, 'employee', 'these are expectations of participant9'),
+(3343, '2025-07-15', 54, 4, 'employee', '');
 
 -- --------------------------------------------------------
 
@@ -64,7 +71,16 @@ INSERT INTO `users` (`user_ID`, `username`, `user_email`, `status`, `password`) 
 (39, 'admin1', 'admin1@example.com', 'admin', '$2y$10$chmYP67UyUQ4RUbjiJ6OS.LsE8du4oRmXYg4JdkG/CegI4YgjRhfa'),
 (45, 'participant1', 'participant1@gmail.com', 'Participant', NULL),
 (46, 'participant2', 'participant2@gmail.com', 'Participant', NULL),
-(47, 'participant3', 'participant3@gmail.com', 'Participant', NULL);
+(47, 'participant3', 'participant3@gmail.com', 'Participant', NULL),
+(48, 'participant4', 'participant4@gmail.com', 'Participant', NULL),
+(49, '5555', 'participant5@gmail.com', 'Participant', NULL),
+(51, 'part7 last7', 'participant7@gmail.com', 'Participant', NULL),
+(52, 'part8 last8', 'participant8@gmail.com', 'Participant', NULL),
+(53, 'Participant9 lastname9', 'participant9@gmail.com', 'Participant', NULL),
+(54, 'Participant10 lastname10', 'participant10@gmail.com', 'Participant', NULL),
+(55, 'admin2', 'admin2@example.com', 'admin', '$2y$10$XcZFrB98pIkEOhkLd6Hs4OFcRBYCVBNBOuFq5CHKdLSum/QQr/PPq'),
+(56, 'admin3', 'admin3@example.com', 'admin', '$2y$10$cp9.JoZ7tEOQnrzEosm.buJOyY/IDcARvk5u9n3ljm01p5OE28zu6'),
+(57, 'admin4', 'admin4@example.com', 'admin', '$2y$10$c6453TN7BsNow0L/R9Y.0uUYXlSPiuXQxAXhTk1EtdWdY7uz1FkUe');
 
 -- --------------------------------------------------------
 
@@ -81,19 +97,18 @@ CREATE TABLE `workshop` (
   `description` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `user_ID` int(11) DEFAULT NULL
+  `category` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `workshop`
 --
 
-INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `end_time`, `description`, `location`, `capacity`, `category`, `user_ID`) VALUES
-(4, 'Art of transformation', '2025-07-14', '09:30:00', '12:00:00', 'Ronald Rand - Cultural Ambassador and Professor of Theater (USA)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
-(5, 'Le masque et le corps du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Claudio de Maglio - Professor of Theater (Italy)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
-(6, 'Le voyage du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Philippe Mertz - Theater writing coach (France)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
-(7, 'Meinser Technique for Scene Development', '2025-07-14', '09:30:00', '12:00:00', 'Jhon Freeman - Professor of Theater (Australia)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL);
+INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `end_time`, `description`, `location`, `capacity`, `category`) VALUES
+(4, 'Art of transformation', '2025-07-14', '09:30:00', '12:00:00', 'Ronald Rand - Cultural Ambassador and Professor of Theater (USA)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(5, 'Le masque et le corps du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Claudio de Maglio - Professor of Theater (Italy)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(6, 'Le voyage du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Philippe Mertz - Theater writing coach (France)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(7, 'Meinser Technique for Scene Development', '2025-07-14', '09:30:00', '12:00:00', 'Jhon Freeman - Professor of Theater (Australia)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater');
 
 --
 -- Indexes for dumped tables
@@ -118,8 +133,7 @@ ALTER TABLE `users`
 -- Indexes for table `workshop`
 --
 ALTER TABLE `workshop`
-  ADD PRIMARY KEY (`workshop_ID`),
-  ADD UNIQUE KEY `user_ID` (`user_ID`);
+  ADD PRIMARY KEY (`workshop_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -129,13 +143,13 @@ ALTER TABLE `workshop`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `registration_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3337;
+  MODIFY `registration_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3344;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Constraints for dumped tables
@@ -147,12 +161,6 @@ ALTER TABLE `users`
 ALTER TABLE `registration`
   ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`),
   ADD CONSTRAINT `registration_ibfk_2` FOREIGN KEY (`workshop_ID`) REFERENCES `workshop` (`workshop_ID`);
-
---
--- Constraints for table `workshop`
---
-ALTER TABLE `workshop`
-  ADD CONSTRAINT `workshop_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
