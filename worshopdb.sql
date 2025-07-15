@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2025 at 05:00 PM
+-- Generation Time: Jul 15, 2025 at 01:38 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,9 +40,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `workshop_ID`, `par_status`) VALUES
-(1111, '2025-07-04', 11, 111, 'student'),
-(2222, '2025-07-05', 22, 222, 'student'),
-(3333, '2025-07-06', 33, 333, 'student');
+(3336, '2025-07-15', 47, 4, 'other');
 
 -- --------------------------------------------------------
 
@@ -63,15 +61,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `username`, `user_email`, `status`, `password`) VALUES
-(11, 'username1', 'user1@example.com', 'participant', NULL),
-(22, 'username2', 'user2@example.com\r\n', 'participant', NULL),
-(33, 'username3', 'user3@example.com', 'participant', NULL),
-(34, 'username4', 'user4@example.com', 'participant', NULL),
-(36, 'username5', 'user5@example.com', 'participant', NULL),
-(37, 'username6', 'user6@example.com', 'participant', NULL),
 (39, 'admin1', 'admin1@example.com', 'admin', '$2y$10$chmYP67UyUQ4RUbjiJ6OS.LsE8du4oRmXYg4JdkG/CegI4YgjRhfa'),
-(43, 'TEST', 'TEST', NULL, NULL),
-(44, 'hiiiiiiii', 'hjyfuszyutyuyuyuyuyuyuyu', NULL, NULL);
+(45, 'participant1', 'participant1@gmail.com', 'Participant', NULL),
+(46, 'participant2', 'participant2@gmail.com', 'Participant', NULL),
+(47, 'participant3', 'participant3@gmail.com', 'Participant', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,9 +90,10 @@ CREATE TABLE `workshop` (
 --
 
 INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `end_time`, `description`, `location`, `capacity`, `category`, `user_ID`) VALUES
-(111, 'Workshop sample1', '2025-07-10', '09:00:00', '10:00:00', 'this is description for workhshop 1 ', 'room 1', 20, 'theater', 39),
-(222, 'workshop sample 2', '2025-07-10', '11:00:00', '12:00:00', 'this is description for workshop 2', 'amphi 2', 15, 'arts', NULL),
-(333, 'workshop sample 3', '2025-07-11', '13:00:00', '14:00:00', 'This is description for workshop 3', 'room 3', 10, 'music', NULL);
+(4, 'Art of transformation', '2025-07-14', '09:30:00', '12:00:00', 'Ronald Rand - Cultural Ambassador and Professor of Theater (USA)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
+(5, 'Le masque et le corps du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Claudio de Maglio - Professor of Theater (Italy)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
+(6, 'Le voyage du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Philippe Mertz - Theater writing coach (France)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL),
+(7, 'Meinser Technique for Scene Development', '2025-07-14', '09:30:00', '12:00:00', 'Jhon Freeman - Professor of Theater (Australia)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater', NULL);
 
 --
 -- Indexes for dumped tables
@@ -132,10 +126,16 @@ ALTER TABLE `workshop`
 --
 
 --
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `registration_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3337;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables

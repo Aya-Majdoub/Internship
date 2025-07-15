@@ -10,7 +10,7 @@
         $result = mysqli_query($conn, $sql);
 
         $row = mysqli_fetch_assoc($result); 
-        $hashedpass = $row["usrpassword"];
+        $hashedpass = $row["password"];
         $_SESSION["admin_ID"] = $row["user_ID"];
         if(empty($password) || empty($email)){
             $_SESSION['error'] = "Please enter your email and password.";
@@ -30,8 +30,6 @@
 
     mysqli_close($conn);
 ?>
-
-<!-- https://docs.google.com/forms/d/e/1FAIpQLSfj6gpcWheYjO9x36ZYe3UrhgoLUbPm1ynvetfqVn82c4HFTA/viewform -->
 
 <!DOCTYPE html>
 <html lang="en">
