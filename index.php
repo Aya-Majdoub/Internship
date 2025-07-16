@@ -13,7 +13,6 @@
         $workshop = $_POST["selected_card"];
         $part = "Participant";
         $exp = $_POST["expectations"];
-        //$workshop_str = implode(", ", $workshop);
      
         if($workshop == "Art of transformation"){
             $wrkshp_ID = 4;

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2025 at 04:23 PM
+-- Generation Time: Jul 16, 2025 at 01:46 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,13 +41,13 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`registration_ID`, `registration_date`, `user_ID`, `workshop_ID`, `par_status`, `expectations`) VALUES
-(3336, '2025-07-15', 47, 4, 'other', NULL),
-(3337, '2025-07-15', 48, 5, 'student', NULL),
-(3338, '2025-07-15', 49, 6, 'employee', NULL),
-(3340, '2025-07-15', 51, 4, 'employee', NULL),
-(3341, '2025-07-15', 52, 4, 'student', NULL),
-(3342, '2025-07-15', 53, 4, 'employee', 'these are expectations of participant9'),
-(3343, '2025-07-15', 54, 4, 'employee', '');
+(3336, '2025-07-15', 47, 1, 'other', NULL),
+(3337, '2025-07-15', 48, 2, 'student', NULL),
+(3338, '2025-07-15', 49, 3, 'employee', NULL),
+(3340, '2025-07-15', 51, 1, 'employee', NULL),
+(3341, '2025-07-15', 52, 1, 'student', NULL),
+(3342, '2025-07-15', 53, 1, 'employee', 'these are expectations of participant9'),
+(3343, '2025-07-15', 54, 1, 'employee', '');
 
 -- --------------------------------------------------------
 
@@ -105,10 +105,10 @@ CREATE TABLE `workshop` (
 --
 
 INSERT INTO `workshop` (`workshop_ID`, `title`, `workshop_date`, `start_time`, `end_time`, `description`, `location`, `capacity`, `category`) VALUES
-(4, 'Art of transformation', '2025-07-14', '09:30:00', '12:00:00', 'Ronald Rand - Cultural Ambassador and Professor of Theater (USA)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
-(5, 'Le masque et le corps du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Claudio de Maglio - Professor of Theater (Italy)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
-(6, 'Le voyage du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Philippe Mertz - Theater writing coach (France)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
-(7, 'Meinser Technique for Scene Development', '2025-07-14', '09:30:00', '12:00:00', 'Jhon Freeman - Professor of Theater (Australia)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater');
+(1, 'Art of transformation', '2025-07-14', '09:30:00', '12:00:00', 'Ronald Rand - Cultural Ambassador and Professor of Theater (USA)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(2, 'Le masque et le corps du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Claudio de Maglio - Professor of Theater (Italy)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(3, 'Le voyage du personnage', '2025-07-14', '09:30:00', '12:00:00', 'Philippe Mertz - Theater writing coach (France)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater'),
+(4, 'Meinser Technique for Scene Development', '2025-07-14', '09:30:00', '12:00:00', 'Jhon Freeman - Professor of Theater (Australia)', 'Faculty of Letters and Human Sciences – Ben M’Sik, Hassan II University, Casablanca', 20, 'theater');
 
 --
 -- Indexes for dumped tables
