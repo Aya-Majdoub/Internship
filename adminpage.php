@@ -215,7 +215,7 @@
                     </tr>
                     <tr class="collapse" id="<?= $collapseId ?>">
                         <td colspan="10">
-                            <div class="card card-body">
+                            <div class="card card-body card-body1">
                                 <?php if (mysqli_num_rows($result3) > 0): ?>
                                     <?php while ($part_info = mysqli_fetch_assoc($result3)) : ?>
                                         <ul>
@@ -260,7 +260,7 @@
 
                     <tr class="collapse" id="<?= $EditcollapseId ?>">
                         <td colspan="10">
-                            <div class="card card-body">
+                            <div class="card card-body card-body1">
                                 
                                 <form class="w-75" action="adminpage.php" method="post">
                                     <div class="mb-3">
@@ -318,7 +318,7 @@
             </button>
         
             <div class="collapse" id="collapseExample1">
-                <div class="card card-body">
+                <div class="card card-body card-body1">
                     <div class="container">
 
                         
@@ -396,7 +396,7 @@
                     Delete
                 </button>
                 <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
+                    <div class="card card-body card-body1">
                         <div class="container">
                             <strong><label style="color: black;">Delete workshops</label></strong>
                             

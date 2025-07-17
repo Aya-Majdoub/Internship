@@ -209,7 +209,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Art of transformation - فن التحول</h5>
                                                         <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA) - رونالد راند - سفير  ثقافي وأستاذ المسرح _الولايات المتحدة الأمريكية </p>
@@ -230,7 +230,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Le masque et le corps du personnage -  القناع و جسد الشخصية</h5>
                                                         <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy) - كلوديو دي ماجليو - أستاذ المسرح (إيطاليا)</p>
@@ -251,7 +251,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/PhilippeMertz.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Le voyage du personnage - رحلة الشخصية </h5>
                                                         <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France) - فيليب ميرتز – كاتب ومدرب كتابة مسرحية (فرنسا)</p>
@@ -280,7 +280,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/jhonfreeman.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Meinser Technique for Scene Development - تقنية مايسنر لتطوير المشهد</h5>
                                                         <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia) - جون فريمان -أستاذ المسرح( أستراليا) </p>
@@ -301,7 +301,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Sample</h5>
                                                         <p class="card-text text-dark">Sample description</p>
@@ -322,7 +322,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Sample</h5>
                                                         <p class="card-text text-dark">Sample description</p>
@@ -348,7 +348,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Sample</h5>
                                                         <p class="card-text text-dark">Sample description</p>
@@ -369,7 +369,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Sample</h5>
                                                         <p class="card-text text-dark">Sample description</p>
@@ -390,7 +390,7 @@
                                                 <div class="IMG-card">
                                                     <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body card-body2">
                                                     <div class="cardtxtdiv">
                                                         <h5 class="card-title text-danger">Sample</h5>
                                                         <p class="card-text text-dark">Sample description</p>

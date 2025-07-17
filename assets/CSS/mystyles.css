@@ -80,10 +80,20 @@ img{
   /*border: #22c8ce solid 2px;*/
 }
 
-.card-body {
+
+.card-body1 {
+  min-width: 95%;
+  max-height: fit-content;
+  display: flex;
+  /*border: #fb3636 solid 2px;*/
+}
+
+.card-body2 {
   height: 300px;
   /*align-content: end;*/
 }
+
+
 
 .cardtxtdiv{
   /*border: #cb28a0ff solid 2px; */
