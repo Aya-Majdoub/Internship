@@ -157,8 +157,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" aria-current="page" href="https://www.fituc.ma/">Home</a>
-                    <a class="nav-link" href="https://intern.com/index.php">Registration</a>
-                    <a class="nav-link" href="https://intern.com/adminlogin.php">Log out</a>
+                    <a class="nav-link" href="https://intern.com/Festival workshops/index.php">Registration</a>
+                    <a class="nav-link" href="https://intern.com/Festival workshops/adminlogin.php">Log out</a>
                 </div>
             </div>
         </div>
@@ -321,14 +321,7 @@
                 <div class="card card-body">
                     <div class="container">
 
-                        <?php
-                            $message = "";
-
-                            if (isset($_SESSION['message'])) {
-                                $message = $_SESSION['message'];
-                                unset($_SESSION['message']);
-                            }
-                        ?>
+                        
 
                         <strong><label style="color: black;">Add workshops</label></strong>
                         <form class="w-75" action="adminpage.php" method="post">
@@ -362,22 +355,7 @@
                             </div>
 
                             <div class="mybutton">
-                                <button class="btn btn-danger" type="submit">Submit</button>
-                                <?php if (!empty($message) && ($message != "Workshop added successfully!")): ?>
-                                    <div class="alert alert-danger alert-dismissible" role="alert">
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        <?php 
-                                            echo $message; 
-                                        ?>
-                                    </div>
-                                <?php elseif(!empty($message) && ($message == "Workshop added successfully!")) : ?>
-                                    <div class="alert alert-success alert-dismissible" role="alert">
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        <?php 
-                                            echo $message; 
-                                        ?>
-                                    </div>
-                                <?php endif; ?>
+                                <button class="btn btn-danger" type="submit">Submit</button>                               
                             </div>
                         </form> 
                     </div>
@@ -386,8 +364,30 @@
         </p>    
 
 
-   
+        <?php
+            $message = "";
 
+            if (isset($_SESSION['message'])) {
+                $message = $_SESSION['message'];
+                unset($_SESSION['message']);
+            }
+        ?>
+        <?php if (!empty($message) && ($message != "Workshop added successfully!")): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <?php 
+                    echo $message; 
+                ?>
+            </div>
+        <?php elseif(!empty($message) && ($message == "Workshop added successfully!")) : ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <?php 
+                    echo $message; 
+                ?>
+            </div>
+        <?php endif; ?>
+        
 
         <!-- Delete workshops -->
         <div  class="delete">
@@ -399,14 +399,7 @@
                     <div class="card card-body">
                         <div class="container">
                             <strong><label style="color: black;">Delete workshops</label></strong>
-                            <?php
-                                $message2 = "";
-
-                                if (isset($_SESSION['message2'])) {
-                                    $message2 = $_SESSION['message2'];
-                                    unset($_SESSION['message2']);
-                                }
-                            ?>
+                            
                             <form class="w-75" action="adminpage.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label" style="color: black;">Workshop title</label>
@@ -422,24 +415,12 @@
                     
                                 <div class="mybutton">
                                     <button class="btn btn-danger" type="submit" name="delete_wrkshp">Delete</button>
-                                    <?php if (!empty($message2) && ($message2 != "Workshop deleted successfully!")): ?>
-                                        <div class="alert alert-danger alert-dismissible" role="alert">
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            <?php 
-                                                echo $message2; 
-                                            ?>
-                                        </div>
-                                    <?php elseif(!empty($message2) && ($message2 == "Workshop deleted successfully!")) : ?>
-                                    <div class="alert alert-success alert-dismissible" role="alert">
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        <?php 
-                                            echo $message2; 
-                                        ?>
-                                    </div>
-                                    <?php endif; ?>
+                                    
                                 </div>
+    
 
                             </form> 
+                            
                     
                         </div>
                     </div>
@@ -447,6 +428,30 @@
             </p>
 
         </div>
+
+        <?php
+            $message2 = "";
+
+            if (isset($_SESSION['message2'])) {
+                $message2 = $_SESSION['message2'];
+                unset($_SESSION['message2']);
+            }
+        ?>
+        <?php if (!empty($message2) && ($message2 != "Workshop deleted successfully!")): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <?php 
+                    echo $message2; 
+                ?>
+            </div>
+        <?php elseif(!empty($message2) && ($message2 == "Workshop deleted successfully!")) : ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <?php 
+                    echo $message2; 
+                ?>
+            </div>
+        <?php endif; ?>
  
     </div> 
     <!-- bootstrap js -->

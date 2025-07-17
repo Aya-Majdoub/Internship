@@ -80,6 +80,7 @@ img{
 
 #c1{
   width: 600px;
+  height: 50rem;
   display: flex;
   justify-content: center;
   /*border: #000000 solid 2px;*/
@@ -87,9 +88,11 @@ img{
 
 .carouselFix{
   justify-content: center;
+  align-items: center;
   display: flex;
   width: -100rem;
   height: 50rem;
+  /*border: #dc3545 solid 2px;*/
 }
 
 .carousel-control-prev,
@@ -171,7 +174,7 @@ img{
 }
 
 .mybutton{
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 100%;
 }
 
