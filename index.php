@@ -15,16 +15,16 @@
         $exp = $_POST["expectations"];
      
         if($workshop == "Art of transformation"){
-            $wrkshp_ID = 4;
+            $wrkshp_ID = 1;
         }
         elseif($workshop == "Le masque et le corps du personnage"){
-            $wrkshp_ID = 5;
+            $wrkshp_ID = 2;
         }
         elseif($workshop == "Le voyage du personnage"){
-            $wrkshp_ID = 6;
+            $wrkshp_ID = 3;
         }
-        elseif($workshop == "Art of transformation"){
-            $wrkshp_ID = 7;
+        elseif($workshop == "Meinser Technique for Scene Development"){
+            $wrkshp_ID = 4;
         }
 
         $check = "SELECT * FROM users WHERE user_email = '$email'";
@@ -143,7 +143,7 @@
             ?>
             
             <form class="w-75" action="index.php" method="post">
-                <div >
+                
                     <div>
                         <div class="form-group">
                             <label style="display: flex; justify-content: space-between;">
@@ -199,84 +199,212 @@
                         <div id = "c1" class = "carousel slide">
                             <div class="carousel-inner">
 
-                                <div class="carousel-item active align-content-center">
+                                <div class="carousel-item active">
                                     <div class="row align-content-center">
-                                        <div class="col">
-                                            <input type="checkbox" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
-                                            <div class = "card card-selectable" style="width: 20rem; height: 50rem";>
-                                                <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
+
+                                        <!-- Card 1 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
+                                                </div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-danger">Art of transformation - فن التحول</h5>
-                                                    <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA) - رونالد راند - سفير  ثقافي وأستاذ المسرح _الولايات المتحدة الأمريكية </p>
-                                                    <label for="select1">
-                                                        <span class="btn btn-danger">Select</span>
-                                                    </label>
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Art of transformation - فن التحول</h5>
+                                                        <p class="card-text text-dark">Ronald Rand - Cultural Ambassador and Professor of Theater (USA) - رونالد راند - سفير  ثقافي وأستاذ المسرح _الولايات المتحدة الأمريكية </p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select1">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Card 2 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Le masque et le corps du personnage -  القناع و جسد الشخصية</h5>
+                                                        <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy) - كلوديو دي ماجليو - أستاذ المسرح (إيطاليا)</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select2">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/PhilippeMertz.jpg" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Le voyage du personnage - رحلة الشخصية </h5>
+                                                        <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France) - فيليب ميرتز – كاتب ومدرب كتابة مسرحية (فرنسا)</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select3">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
+            
+
                                 <div class="carousel-item align-content-center">
                                     <div class="row justify-content-center">
-                                        <div class="col">
-                                            <input type="checkbox" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
+
+                                        <!-- Card 4 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                                <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
-
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/jhonfreeman.jpg" alt="">
+                                                </div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-danger">Le masque et le corps du personnage -  القناع و جسد الشخصية</h5>
-                                                    <p class="card-text text-dark">Claudio de Maglio - Professor of Theater (Italy) - كلوديو دي ماجليو - أستاذ المسرح (إيطاليا)</p>
-
-                                                    <label for="select2">
-                                                        <span class="btn btn-danger">Select</span>
-                                                    </label>
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Meinser Technique for Scene Development - تقنية مايسنر لتطوير المشهد</h5>
+                                                        <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia) - جون فريمان -أستاذ المسرح( أستراليا) </p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select4">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>    
-                                </div>
 
-                                <div class="carousel-item align-content-center">
-                                    <div class="row justify-content-center">
-                                        <div class="col">
-                                            <input type="checkbox" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
+                                        <!-- Card 5 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select5" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                                <img class = "card-img-top" src = "assets/images/PhilippeMertz.jpg" alt="">
-
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
+                                                </div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-danger">Le voyage du personnage - رحلة الشخصية </h5>
-                                                    <p class="card-text text-dark">Philippe Mertz - Theater writing coach (France) - فيليب ميرتز – كاتب ومدرب كتابة مسرحية (فرنسا)</p>
-
-                                                    <label for="select3">
-                                                        <span class="btn btn-danger">Select</span>
-                                                    </label>
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Sample</h5>
+                                                        <p class="card-text text-dark">Sample description</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select5">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>    
-                                </div>
 
-                                <div class="carousel-item align-content-center">
-                                    <div class="row justify-content-center">
-                                        <div class="col">
-                                            <input type="checkbox" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
+                                        <!-- Card 6 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select6" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
-                                                <img class = "card-img-top" src = "assets/images/jhonfreeman.jpg" alt="">
-
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
+                                                </div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-danger">Meinser Technique for Scene Development - تقنية مايسنر لتطوير المشهد</h5>
-                                                    <p class="card-text text-dark">Jhon Freeman - Professor of Theater (Australia) - جون فريمان -أستاذ المسرح( أستراليا) </p>
-
-                                                    <label for="select4">
-                                                        <span class="btn btn-danger">Select</span>
-                                                    </label>
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Sample</h5>
+                                                        <p class="card-text text-dark">Sample description</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select6">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>    
                                 </div>
                                 
+                                <div class="carousel-item align-content-center">
+                                    <div class="row justify-content-center">
+
+                                        <!-- Card 7 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select7" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Sample</h5>
+                                                        <p class="card-text text-dark">Sample description</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select7">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 5 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select8" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Sample</h5>
+                                                        <p class="card-text text-dark">Sample description</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select8">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 6 -->
+                                        <div class="col-md-4">
+                                            <input type="radio" id="select9" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
+                                            <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
+                                                <div class="IMG-card">
+                                                    <img class = "card-img-top" src = "assets/images/profileICON.jpg" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="cardtxtdiv">
+                                                        <h5 class="card-title text-danger">Sample</h5>
+                                                        <p class="card-text text-dark">Sample description</p>
+                                                    </div>
+                                                    <div class="cardbtndiv">
+                                                        <label for="select9">
+                                                            <span class="btn btn-danger">Select</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
 
                             </div>
 
@@ -293,7 +421,7 @@
                         </div>
 
                     </div>
-                </div>
+                
                 <div class="mybutton1 d-grid gap-2">
                         <button class="btn btn-danger" type="submit">Submit</button>
                         <?php if (!empty($message) && ($message != "Registered successfully!")): ?>
