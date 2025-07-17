@@ -85,14 +85,39 @@
     <link rel = "stylesheet" href = "assets/CSS/bootstrap.min.css">
     <!-- css -->
     <link rel = "stylesheet" href = "assets/CSS/mystyles.css">
+    <!--<style>
+    .button{
+       /* background-color: black;*/
+    }
+    .navbar-nav{
+        /*background-color: black;*/
+    }
+    </style>-->
     
 
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary " >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Fituc 2025</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link " aria-current="page" href="https://www.fituc.ma/">Home</a>
+                    <a class="nav-link active" href="https://intern.com/index.php">Registration</a>
+                    <a class="nav-link" href="https://intern.com/adminlogin.php">Admin log in</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     
     <header id="header">
         <h1 class="indexh1">   التسجيل في ورشات الدورة السابعة والثلاثين لمهرجان المسرح  الجامعي الدولي بالدار البيضاء بكلية الآداب والعلوم الإنسانية بنمسيك  Registration for the Workshops of the 37th International University Theater Festival in Casablanca at the Faculty of Letters and Human Sciences of Ben M'Sik🎭</h1>
     </header>
+    
     <div class="formlayout">
         <div class="container">
             <p style="font-size: larger;">هل تحلم بتطوير مهاراتك المسرحية على يد أساتذة المسرح
@@ -117,9 +142,9 @@
                 }
             ?>
             
-            <form class="w-50" action="index.php" method="post">
-                <div class="row d-flex align-items-center">
-                    <div class="col">
+            <form class="w-75" action="index.php" method="post">
+                <div >
+                    <div>
                         <div class="form-group">
                             <label style="display: flex; justify-content: space-between;">
                                 <span> First Name  </span>                           
@@ -167,7 +192,10 @@
                             <textarea class="form-control" placeholder="Let us know your expectations about the workshops" name="expectations" rows="8"></textarea>
                         </div>
                     </div>
-                    <div class="col d-flex justify-self-center">
+
+                    <br> <br> <br>
+
+                    <div>
                         <div id = "c1" class = "carousel slide">
                             <div class="carousel-inner">
 
@@ -266,7 +294,7 @@
 
                     </div>
                 </div>
-                <div class="mybutton">
+                <div class="mybutton d-grid gap-2">
                         <button class="btn btn-danger" type="submit">Submit</button>
                         <?php if (!empty($message) && ($message != "Registered successfully!")): ?>
                             <div class="alert alert-danger alert-dismissible" role="alert">

@@ -1,11 +1,11 @@
 body{
   font-family: "Open Sans", sans-serif;
-  /*background-image: url('../images/37thed.jpg');*/
+  background-image: url('../images/37thed.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  font-size: large;
-  color: #fff;
+  background-size: 100%;
+  color: #ffffff;
+   background-attachment: fixed;
+  
 }
 
 body::before {
@@ -21,53 +21,50 @@ body::before {
 
 h1{
   text-align: center;
-  color: rgb(0, 0, 0);
-  background-color: #c89999cc;
+  color: rgb(255, 255, 255);
+  background-color: rgba(214, 23, 31, 0.5);
   border-radius: 2px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0);
   display: flexbox;
-  margin-top: 5rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  height: 5rem;
+  width: 100%;
+  margin-bottom: 5rem;
+  padding: 1rem;
 }
 
 .indexh1 {
-    text-align: center;
-    color: rgb(255, 255, 255);
-    background-color: #3f0e0ec9;
-    border-radius: 2px;
-    box-shadow: 1px 2px 8px rgba(0, 0, 0);
-    display: flexbox;
-    height: 300px;
-    padding: 1rem;
-    padding-top: 3rem;
-    margin-top: 5rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0);
+  display: flexbox;
+  width: 100%;
+  margin-bottom: 5rem;
+  padding: 1rem;
 }
 
 .mycontainer {
     margin: 2rem auto;
     margin-bottom: 2rem;
     display: flex;
-    align-items: flex-start;
+    /*align-items: flex-start;*/
     gap: 1rem;
     justify-content: center;
+    
 }
 
+
 .desc {
-  background-color: rgba(111, 56, 30, 0.8);
-  width: 50rem;
-  margin: 10px;
-  padding: 10px;
-  float: auto;
-  border-radius: 2cqmin;
-  position: relative;
-  top: 50px;
-  left: 50px;
-  right: 50px;
+  background-color: rgba(214, 23, 31, 0.7);
+  width: 500px;
+  padding: 30px;
+  border-radius: 12px;
+  color:black;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -83,7 +80,9 @@ img{
 
 #c1{
   max-width: 100%;
-  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .carousel-control-prev,
@@ -112,12 +111,13 @@ img{
 }
 
 .carousel {
-  width: 600px; 
-  margin: 2rem auto;
+  max-width: 600px; 
+  margin: -15%;
 }
 
 .carousel-inner {
   max-height: 100rem; 
+  width: 100rem;
   overflow: hidden;
   justify-content: center;
   align-items: center;
@@ -130,7 +130,8 @@ img{
 .card-selectable {
   border: 2px solid transparent;
   transition: border 0.3s, box-shadow 0.3s;
-  max-height: 700px;
+  max-height: 800px;
+  width:fit-content;
   justify-content: center;
   align-items: center;
 }
@@ -147,7 +148,7 @@ img{
   padding-top: 50px;
   padding-left: 50px;
   padding-right: 50px;
-  background-color: rgba(92, 6, 6, 0.5);
+  background-color: rgba(92, 6, 6, 0.7);
 }
 
 #forminput{
@@ -157,6 +158,16 @@ img{
 }
 
 .mybutton{
-  width: 400px;
-  
+  margin-top: 7rem;
+  width: 100%;
+
 }
+
+.add {
+ 
+  justify-content: center; 
+  width: 100%;
+  margin-left: 20px;
+}
+
+ 

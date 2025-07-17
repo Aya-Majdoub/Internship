@@ -88,7 +88,6 @@
     }
 
     /* Edit workshops */
-    //var_dump($_POST); exit;
     
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit_button'])){
         $ID = $_POST["ID"];
@@ -109,15 +108,6 @@
             $query7 = "UPDATE workshop SET title = ?, description = ?, workshop_date = ?, start_time = ?, end_time = ?, capacity = ?, category = ? WHERE workshop_ID = ?";
             if($stmt2 = $conn->prepare($query7)){
                 $stmt2->bind_param("sssssisi", $title2, $description2, $date2, $Stime2, $Etime2, $capacity2, $category2, $ID);
-                /*if($stmt2->execute()){
-                    $_SESSION["message3"] = "Workshop edited successfully!";
-                    header("Location: adminpage.php?success=3");
-                    exit();
-                } else {
-                    $_SESSION["message3"] = "Error editing workshop!";
-                    header("Location: adminpage.php?error=7");
-                    exit();
-                }*/
 
                 if($stmt2->execute()){
                     if ($stmt2->affected_rows > 0) {
@@ -151,34 +141,50 @@
     <link rel = "stylesheet" href = "assets/CSS/bootstrap.min.css">
     <!-- css -->
     <link rel = "stylesheet" href = "assets/CSS/mystyles.css">
+
+    <style>
+
+    </style>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Fituc 2025</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="https://www.fituc.ma/">Home</a>
+                    <a class="nav-link" href="https://intern.com/index.php">Registration</a>
+                    <a class="nav-link" href="https://intern.com/adminlogin.php">Log out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     
-    <h1>Admin profile</h1>
-    <div class="row">
-        <h2 class="mycontainer">
-            <?php echo "Hello " . $adminInfo["username"]; ?>
-        </h2><br><br>
-    </div>
+    <h1><?php echo "Hello " . $adminInfo["username"]; ?></h1>
+    
 
     <!-- Current workshops -->
     <div class="container">
-        <table class="table">
+        <table class="table table-secondary rounded-4 overflow-hidden table-striped border-dark">
             <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Workshop</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th> 
-                <th scope="col">Start_time</th>
-                <th scope="col">End_time</th>  
-                <th scope="col">Capacity</th> 
-                <th scope="col">Category</th>   
-                <th> </th> 
-                <th> </th>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">Workshop</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th> 
+                    <th scope="col">Start_time</th>
+                    <th scope="col">End_time</th>  
+                    <th scope="col">Capacity</th> 
+                    <th scope="col">Category</th>   
+                    <th> </th> 
+                    <th> </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
                 <?php while ($workshopInfo = mysqli_fetch_assoc($result2)) : 
                     $collapseId = "collapse" . $workshopInfo["workshop_ID"];
                     $EditcollapseId = "edcollapse" . $workshopInfo["workshop_ID"];
@@ -197,12 +203,12 @@
                         <td><?php echo $workshopInfo["capacity"]; ?></td>
                         <td><?php echo $workshopInfo["category"]; ?></td>
                         <td>
-                            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $collapseId ?>" aria-expanded="false" aria-controls="#<?= $collapseId ?>">
+                            <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $collapseId ?>" aria-expanded="false" aria-controls="#<?= $collapseId ?>">
                                 View participants
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $EditcollapseId ?>" aria-expanded="false" aria-controls="#<?= $EditcollapseId ?>">
+                            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $EditcollapseId ?>" aria-expanded="false" aria-controls="#<?= $EditcollapseId ?>">
                                 Edit workshop
                             </button>
                         </td>
@@ -303,6 +309,14 @@
 
     <!-- Add workshops -->
     <div class="container">
+    <p class="d-grid gap-2">
+        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+            Add
+        </button>
+    
+        <div class="collapse" id="collapseExample1">
+            <div class="card card-body">
+                <div class="container">
 
         <?php
             $message = "";
@@ -364,11 +378,23 @@
             </div>
         </form> 
     </div>
+            </div>
+        </div>
+    </p>
 
-    <br><br><br>
+
+   
+
 
     <!-- Delete workshops -->
-    <div class="container">
+<div  class="delete">
+    <p class="d-grid gap-2">
+        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Delete
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div class="container">
         <strong><label>Delete workshops</label></strong>
         <?php
             $message2 = "";
@@ -413,8 +439,13 @@
         </form> 
             
     </div>
+            </div>
+        </div>
+    </p>
 
-    
+</div>
+ 
+</div> 
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
     <!-- javascript -->
