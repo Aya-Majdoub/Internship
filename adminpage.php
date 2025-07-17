@@ -189,7 +189,7 @@
                     $collapseId = "collapse" . $workshopInfo["workshop_ID"];
                     $EditcollapseId = "edcollapse" . $workshopInfo["workshop_ID"];
                     $workshopID = $workshopInfo["workshop_ID"];
-                    $query3 = "SELECT u.username, u.user_email, r.par_status FROM registration r JOIN users u ON u.user_ID = r.user_ID WHERE r.workshop_ID = $workshopID";
+                    $query3 = "SELECT u.username, u.user_email, r.par_status, r.expectations FROM registration r JOIN users u ON u.user_ID = r.user_ID WHERE r.workshop_ID = $workshopID";
                     $result3 = mysqli_query($conn, $query3);
                     ?>
                         
@@ -221,7 +221,8 @@
                                         <ul>
                                             <li><strong><?php echo $part_info["username"] ?></strong> — 
                                             <?php echo $part_info["user_email"] ?> — 
-                                            Status: <?php echo $part_info["par_status"] ?></li>
+                                            Status: <?php echo $part_info["par_status"] ?> — 
+                                            Expectations: <?php echo $part_info["expectations"] ?></li>
                                         </ul>
                                     <?php endwhile; ?>
                                 <?php else : ?>
@@ -307,145 +308,147 @@
         </table>
     </div>    
 
-    <!-- Add workshops -->
-    <div class="container">
-    <p class="d-grid gap-2">
-        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-            Add
-        </button>
     
-        <div class="collapse" id="collapseExample1">
-            <div class="card card-body">
-                <div class="container">
+    <div class="container">
 
-        <?php
-            $message = "";
+        <!-- Add workshops -->
+        <p class="d-grid gap-2">
+            <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                Add
+            </button>
+        
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                    <div class="container">
 
-            if (isset($_SESSION['message'])) {
-                $message = $_SESSION['message'];
-                unset($_SESSION['message']);
-            }
-        ?>
+                        <?php
+                            $message = "";
 
-        <strong><label>Add workshops</label></strong>
-        <form class="w-75" action="adminpage.php" method="post">
-            <div class="mb-3">
-                <label class="form-label">Workshop title</label>
-                <input type="text" class="form-control" placeholder="workshop title" name="title">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Description</label>
-                <textarea class="form-control" rows="3" name="description" placeholder="Type the description here"></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Date</label>
-                <input type="date" class="form-control" name="date">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Start_time</label>
-                <input type="time" class="form-control" name="Stime">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">End_time</label>
-                <input type="time" class="form-control" name="Etime">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Capacity</label>
-                <input type="number" class="form-control" name="capacity">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Category</label>
-                <input type="text" class="form-control" name="category">
-            </div>
-
-            <div class="mybutton">
-                <button class="btn btn-danger" type="submit">Submit</button>
-                <?php if (!empty($message) && ($message != "Workshop added successfully!")): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <?php 
-                            echo $message; 
+                            if (isset($_SESSION['message'])) {
+                                $message = $_SESSION['message'];
+                                unset($_SESSION['message']);
+                            }
                         ?>
+
+                        <strong><label style="color: black;">Add workshops</label></strong>
+                        <form class="w-75" action="adminpage.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Workshop title</label>
+                                <input type="text" class="form-control" placeholder="workshop title" name="title">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Description</label>
+                                <textarea class="form-control" rows="3" name="description" placeholder="Type the description here"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Date</label>
+                                <input type="date" class="form-control" name="date">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Start_time</label>
+                                <input type="time" class="form-control" name="Stime">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">End_time</label>
+                                <input type="time" class="form-control" name="Etime">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Capacity</label>
+                                <input type="number" class="form-control" name="capacity">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="color: black;">Category</label>
+                                <input type="text" class="form-control" name="category">
+                            </div>
+
+                            <div class="mybutton">
+                                <button class="btn btn-danger" type="submit">Submit</button>
+                                <?php if (!empty($message) && ($message != "Workshop added successfully!")): ?>
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <?php 
+                                            echo $message; 
+                                        ?>
+                                    </div>
+                                <?php elseif(!empty($message) && ($message == "Workshop added successfully!")) : ?>
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <?php 
+                                            echo $message; 
+                                        ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </form> 
                     </div>
-                <?php elseif(!empty($message) && ($message == "Workshop added successfully!")) : ?>
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <?php 
-                            echo $message; 
-                        ?>
-                    </div>
-                <?php endif; ?>
+                </div>
             </div>
-        </form> 
-    </div>
-            </div>
-        </div>
-    </p>
+        </p>    
 
 
    
 
 
-    <!-- Delete workshops -->
-<div  class="delete">
-    <p class="d-grid gap-2">
-        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Delete
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <div class="container">
-        <strong><label>Delete workshops</label></strong>
-        <?php
-            $message2 = "";
+        <!-- Delete workshops -->
+        <div  class="delete">
+            <p class="d-grid gap-2">
+                <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Delete
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="container">
+                            <strong><label style="color: black;">Delete workshops</label></strong>
+                            <?php
+                                $message2 = "";
 
-            if (isset($_SESSION['message2'])) {
-                $message2 = $_SESSION['message2'];
-                unset($_SESSION['message2']);
-            }
-        ?>
-        <form class="w-75" action="adminpage.php" method="post">
-            <div class="mb-3">
-                <label class="form-label">Workshop title</label>
-                <select class="form-select" name="selected_workshop">
-                    <option selected>Select workshop</option>
-                    <?php while ($workshopInfo = mysqli_fetch_assoc($result4)) : ?>
-                        <option value="<?php echo $workshopInfo['workshop_ID']; ?>">
-                            <?php echo $workshopInfo["title"]; ?>
-                        </option>
-                    <?php endwhile; ?>
-                </select>
-            </div>
-            
-            <div class="mybutton">
-                <button class="btn btn-danger" type="submit" name="delete_wrkshp">Delete</button>
-                <?php if (!empty($message2) && ($message2 != "Workshop deleted successfully!")): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <?php 
-                            echo $message2; 
-                        ?>
-                    </div>
-                <?php elseif(!empty($message2) && ($message2 == "Workshop deleted successfully!")) : ?>
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <?php 
-                            echo $message2; 
-                        ?>
-                    </div>
-                <?php endif; ?>
-            </div>
+                                if (isset($_SESSION['message2'])) {
+                                    $message2 = $_SESSION['message2'];
+                                    unset($_SESSION['message2']);
+                                }
+                            ?>
+                            <form class="w-75" action="adminpage.php" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black;">Workshop title</label>
+                                    <select class="form-select" name="selected_workshop">
+                                        <option selected>Select workshop</option>
+                                        <?php while ($workshopInfo = mysqli_fetch_assoc($result4)) : ?>
+                                            <option value="<?php echo $workshopInfo['workshop_ID']; ?>">
+                                                <?php echo $workshopInfo["title"]; ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+                    
+                                <div class="mybutton">
+                                    <button class="btn btn-danger" type="submit" name="delete_wrkshp">Delete</button>
+                                    <?php if (!empty($message2) && ($message2 != "Workshop deleted successfully!")): ?>
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <?php 
+                                                echo $message2; 
+                                            ?>
+                                        </div>
+                                    <?php elseif(!empty($message2) && ($message2 == "Workshop deleted successfully!")) : ?>
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <?php 
+                                            echo $message2; 
+                                        ?>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
 
-        </form> 
-            
-    </div>
-            </div>
+                            </form> 
+                    
+                        </div>
+                    </div>
+                </div>
+            </p>
+
         </div>
-    </p>
-
-</div>
  
-</div> 
+    </div> 
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
     <!-- javascript -->

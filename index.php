@@ -195,13 +195,13 @@
 
                     <br> <br> <br>
 
-                    <div>
+                    <div class="carouselFix">
                         <div id = "c1" class = "carousel slide">
                             <div class="carousel-inner">
 
-                                <div class="carousel-item active">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12 col-sm-6 col-md-3">
+                                <div class="carousel-item active align-content-center">
+                                    <div class="row align-content-center">
+                                        <div class="col">
                                             <input type="checkbox" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 20rem; height: 50rem";>
                                                 <img class = "card-img-top" src = "assets/images/Ronald_Rand_asHC.jpg" alt="">
@@ -217,9 +217,9 @@
                                     </div>
                                 </div>
 
-                                <div class="carousel-item">
+                                <div class="carousel-item align-content-center">
                                     <div class="row justify-content-center">
-                                        <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="col">
                                             <input type="checkbox" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <img class = "card-img-top" src = "assets/images/de-maglio-2-scaled.jpg" alt="">
@@ -237,9 +237,9 @@
                                     </div>    
                                 </div>
 
-                                <div class="carousel-item">
+                                <div class="carousel-item align-content-center">
                                     <div class="row justify-content-center">
-                                        <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="col">
                                             <input type="checkbox" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <img class = "card-img-top" src = "assets/images/PhilippeMertz.jpg" alt="">
@@ -257,9 +257,9 @@
                                     </div>    
                                 </div>
 
-                                <div class="carousel-item">
+                                <div class="carousel-item align-content-center">
                                     <div class="row justify-content-center">
-                                        <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="col">
                                             <input type="checkbox" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <img class = "card-img-top" src = "assets/images/jhonfreeman.jpg" alt="">
@@ -294,7 +294,7 @@
 
                     </div>
                 </div>
-                <div class="mybutton d-grid gap-2">
+                <div class="mybutton1 d-grid gap-2">
                         <button class="btn btn-danger" type="submit">Submit</button>
                         <?php if (!empty($message) && ($message != "Registered successfully!")): ?>
                             <div class="alert alert-danger alert-dismissible" role="alert">
