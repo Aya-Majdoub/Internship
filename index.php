@@ -1,76 +1,7 @@
 <?php
-    session_start();
     include("database.php");
+    include("form_confirm.php");
 
-    $error = "";
-    
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $name = $fname ." ". $lname;
-        $email = $_POST["email"];
-        $status = $_POST["status"];
-        $workshop = $_POST["selected_card"];
-        $part = "Participant";
-        $exp = $_POST["expectations"];
-     
-        if($workshop == "Art of transformation"){
-            $wrkshp_ID = 1;
-        }
-        elseif($workshop == "Le masque et le corps du personnage"){
-            $wrkshp_ID = 2;
-        }
-        elseif($workshop == "Le voyage du personnage"){
-            $wrkshp_ID = 3;
-        }
-        elseif($workshop == "Meinser Technique for Scene Development"){
-            $wrkshp_ID = 4;
-        }
-
-        $check = "SELECT * FROM users WHERE user_email = '$email'";
-        $checking = mysqli_query($conn, $check);
-
-        $now = date('Y-m-d'); 
-
-        if(empty($name) || empty($email) || empty($status)){
-            $_SESSION["message"] = "Please fill in all fields.";
-            header("Location: index.php?error=1");
-            exit();
-        }
-        elseif(mysqli_num_rows($checking) > 0){
-            $_SESSION["message"] = "This email already exists!";
-            header("Location: index.php?error=2");
-            exit();
-        }
-        else {
-            $sql = "INSERT INTO users (username, user_email, status) VALUES (?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $sql);
-
-            
-
-            $query = "INSERT INTO registration (registration_date, user_ID, workshop_ID, par_status, expectations) VALUES (?, ?, ?, ?, ?)";
-            $stmt2 = mysqli_prepare($conn, $query);
-            
-
-            if($stmt && $stmt2){
-               $stmt->bind_param("sss", $name, $email, $part); 
-               $stmt->execute();
-               $user_id = mysqli_insert_id($conn);
-               $stmt->close();
-
-               $stmt2->bind_param("siiss", $now, $user_id, $wrkshp_ID, $status, $exp); 
-               $stmt2->execute();
-               $stmt2->close();
-
-               $_SESSION["message"] = "Registered successfully!";
-               header("Location: index.php?success=1");
-               exit();
-            }
-            
-        }
-    }
-
-    mysqli_close($conn);
 ?>
 
 
@@ -79,22 +10,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog</title>
+    <title>Register</title>
 
     <!-- bootstrap css -->
     <link rel = "stylesheet" href = "assets/CSS/bootstrap.min.css">
     <!-- css -->
     <link rel = "stylesheet" href = "assets/CSS/mystyles.css">
-    <!--<style>
-    .button{
-       /* background-color: black;*/
-    }
-    .navbar-nav{
-        /*background-color: black;*/
-    }
-    </style>-->
     
-
 </head>
 <body>
 
@@ -107,8 +29,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link " aria-current="page" href="https://www.fituc.ma/">Home</a>
-                    <a class="nav-link active" href="https://intern.com/Festival workshops/index.php">Registration</a>
-                    <a class="nav-link" href="https://intern.com/Festival workshops/adminlogin.php">Admin log in</a>
+                    <a class="nav-link active" href="https://intern.com/index.php">Registration</a>
+                    <a class="nav-link" href="https://intern.com/adminlogin.php">Admin log in</a>
                 </div>
             </div>
         </div>
@@ -142,7 +64,7 @@
                 }
             ?>
             
-            <form class="w-75" action="index.php" method="post">
+            <form class="w-75" action="form_confirm.php" method="post">
                 
                     <div>
                         <div class="form-group">
@@ -194,16 +116,16 @@
                     </div>
 
                     <br> <br> <br>
-
+        
                     <div class="carouselFix">
                         <div id = "c1" class = "carousel slide">
                             <div class="carousel-inner">
 
-                                <div class="carousel-item active">
-                                    <div class="row align-content-center">
+                                <div class="carousel-item active align-content-center">
+                                    <div class="row justify-content-center">
 
                                         <!-- Card 1 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select1" name="selected_card" value="Art of transformation" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -224,7 +146,7 @@
                                         </div>
 
                                         <!-- Card 2 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select2" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -245,7 +167,7 @@
                                         </div>
 
                                         <!-- Card 3 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select3" name="selected_card" value="Le voyage du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -274,7 +196,7 @@
                                     <div class="row justify-content-center">
 
                                         <!-- Card 4 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select4" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -295,7 +217,7 @@
                                         </div>
 
                                         <!-- Card 5 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select5" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -316,7 +238,7 @@
                                         </div>
 
                                         <!-- Card 6 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select6" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -342,7 +264,7 @@
                                     <div class="row justify-content-center">
 
                                         <!-- Card 7 -->
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select7" name="selected_card" value="Meinser Technique for Scene Development" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -362,8 +284,8 @@
                                             </div>
                                         </div>
 
-                                        <!-- Card 5 -->
-                                        <div class="col-md-4">
+                                        <!-- Card 8 -->
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select8" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -383,8 +305,8 @@
                                             </div>
                                         </div>
 
-                                        <!-- Card 6 -->
-                                        <div class="col-md-4">
+                                        <!-- Card 9 -->
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <input type="radio" id="select9" name="selected_card" value="Le masque et le corps du personnage" class="card-checkbox">
                                             <div class = "card card-selectable" style="width: 18rem; height: 50rem";>
                                                 <div class="IMG-card">
@@ -449,10 +371,7 @@
 
 
     
-    <!-- bootstrap js -->
-    <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
-    <!-- javascript -->
-    <script src = "assets/JavaScript/main.js"></script>
+
     
 
 </body>

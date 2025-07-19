@@ -157,7 +157,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" aria-current="page" href="https://www.fituc.ma/">Home</a>
-                    <a class="nav-link" href="https://intern.com/Festival workshops/index.php">Registration</a>
+                    <a class="nav-link" href="https://intern.com/index.php">Registration</a>
                     <a class="nav-link" href="https://intern.com/Festival workshops/adminlogin.php">Log out</a>
                 </div>
             </div>
