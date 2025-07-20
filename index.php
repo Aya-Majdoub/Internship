@@ -1,6 +1,81 @@
 <?php
+    session_start();
     include("database.php");
-    include("form_confirm.php");
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+        $name = $fname ." ". $lname;
+        $email = $_POST["email"];
+        $status = $_POST["status"];
+        $workshop = $_POST["selected_card"];
+        $part = "Participant";
+        $exp = $_POST["expectations"];
+
+     
+        if($workshop == "Art of transformation"){
+            $wrkshp_ID = 1;
+        }
+        elseif($workshop == "Le masque et le corps du personnage"){
+            $wrkshp_ID = 2;
+        }
+        elseif($workshop == "Le voyage du personnage"){
+            $wrkshp_ID = 3;
+        }
+        elseif($workshop == "Meinser Technique for Scene Development"){
+            $wrkshp_ID = 4;
+        }
+
+        $check = "SELECT * FROM users WHERE user_email = '$email'";
+        $checking = mysqli_query($conn, $check);
+
+        $now = date('Y-m-d'); 
+
+        if(empty($name) || empty($email) || empty($status)){
+            $_SESSION["message"] = "Please fill in all fields.";
+            header("Location: index.php?error=1");
+            exit();
+        }
+        elseif(mysqli_num_rows($checking) > 0){
+            $_SESSION["message"] = "This email already exists!";
+            header("Location: index.php?error=2");
+            exit();
+        }
+        else {
+            $sql = "INSERT INTO users (username, user_email, status) VALUES (?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $sql);
+
+            $query = "INSERT INTO registration (registration_date, user_ID, workshop_ID, par_status, expectations) VALUES (?, ?, ?, ?, ?)";
+            $stmt2 = mysqli_prepare($conn, $query);
+            
+
+            if($stmt && $stmt2){
+               $stmt->bind_param("sss", $name, $email, $part); 
+               $stmt->execute();
+               $user_id = mysqli_insert_id($conn);
+               $stmt->close();
+
+               $stmt2->bind_param("siiss", $now, $user_id, $wrkshp_ID, $status, $exp); 
+               $stmt2->execute();
+               $stmt2->close();
+
+                $_SESSION["fname"] = $fname;
+                $_SESSION["lname"] = $lname;
+                $_SESSION["name"] = $name;
+                $_SESSION["email"] = $email;
+                $_SESSION["status"] = $status;
+                $_SESSION["workshop"] = $workshop;
+                $_SESSION["part"] = $part;
+                $_SESSION["exp"] = $exp;
+               
+               header("Location: form_confirm.php?success=1");
+               exit();
+            }
+            
+        }
+    }
+
+    mysqli_close($conn);
 
 ?>
 
@@ -64,7 +139,7 @@
                 }
             ?>
             
-            <form class="w-75" action="form_confirm.php" method="post">
+            <form class="w-75" action="index.php" method="post">
                 
                     <div>
                         <div class="form-group">
@@ -347,14 +422,14 @@
                 <div class="mybutton1 d-grid gap-2">
                         <button class="btn btn-danger" type="submit">Submit</button>
                         <?php if (!empty($message) && ($message != "Registered successfully!")): ?>
-                            <div class="alert alert-danger alert-dismissible" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <?php 
                                     echo $message; 
                                 ?>
                             </div>
                         <?php elseif(!empty($message) && ($message == "Registered successfully!")) : ?>
-                            <div class="alert alert-success alert-dismissible" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <?php 
                                     echo $message; 
@@ -371,7 +446,10 @@
 
 
     
-
+    <!-- bootstrap js -->
+    <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
+    <!-- javascript -->
+    <script src = "assets/JavaScript/main.js"></script>
     
 
 </body>

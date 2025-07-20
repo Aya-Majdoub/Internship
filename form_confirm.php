@@ -1,85 +1,7 @@
 <?php
-
     session_start();
     include("database.php");
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $name = $fname ." ". $lname;
-        $email = $_POST["email"];
-        $status = $_POST["status"];
-        $workshop = $_POST["selected_card"];
-        $part = "Participant";
-        $exp = $_POST["expectations"];
-
-     
-        if($workshop == "Art of transformation"){
-            $wrkshp_ID = 1;
-        }
-        elseif($workshop == "Le masque et le corps du personnage"){
-            $wrkshp_ID = 2;
-        }
-        elseif($workshop == "Le voyage du personnage"){
-            $wrkshp_ID = 3;
-        }
-        elseif($workshop == "Meinser Technique for Scene Development"){
-            $wrkshp_ID = 4;
-        }
-
-        $check = "SELECT * FROM users WHERE user_email = '$email'";
-        $checking = mysqli_query($conn, $check);
-
-        $now = date('Y-m-d'); 
-
-        if(empty($name) || empty($email) || empty($status)){
-            $_SESSION["message"] = "Please fill in all fields.";
-            header("Location: index.php?error=1");
-            exit();
-        }
-        elseif(mysqli_num_rows($checking) > 0){
-            $_SESSION["message"] = "This email already exists!";
-            header("Location: index.php?error=2");
-            exit();
-        }
-        else {
-            $sql = "INSERT INTO users (username, user_email, status) VALUES (?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $sql);
-
-            $query = "INSERT INTO registration (registration_date, user_ID, workshop_ID, par_status, expectations) VALUES (?, ?, ?, ?, ?)";
-            $stmt2 = mysqli_prepare($conn, $query);
-            
-
-            if($stmt && $stmt2){
-               $stmt->bind_param("sss", $name, $email, $part); 
-               $stmt->execute();
-               $user_id = mysqli_insert_id($conn);
-               $stmt->close();
-
-               $stmt2->bind_param("siiss", $now, $user_id, $wrkshp_ID, $status, $exp); 
-               $stmt2->execute();
-               $stmt2->close();
-
-                $_SESSION["fname"] = $fname;
-                $_SESSION["lname"] = $lname;
-                $_SESSION["name"] = $name;
-                $_SESSION["email"] = $email;
-                $_SESSION["status"] = $status;
-                $_SESSION["workshop"] = $workshop;
-                $_SESSION["part"] = $part;
-                $_SESSION["exp"] = $exp;
-               
-               header("Location: form_confirm.php?success=1");
-               exit();
-            }
-            
-        }
-    }
-
-    mysqli_close($conn);
-
-?>
-<?php
     $fname = $_SESSION["fname"] ?? 'No fname stored';
     $lname = $_SESSION["lname"] ?? 'No lname stored';
     $name = $_SESSION["name"] ?? 'No name stored';
@@ -100,24 +22,71 @@
     <!-- bootstrap css -->
     <link rel = "stylesheet" href = "assets/CSS/bootstrap.min.css">
     <!-- css -->
-    <link rel = "stylesheet" href = "assets/CSS/mystyles.css">
+    <link rel = "stylesheet" href = "assets/CSS/formStyles.css">
 
 </head>
 <body>
     
-    <h1>Your participation info</h1>
-    <h2>
-        <?php 
-            echo $fname;
-            echo $lname;
-            echo $name;
-            echo $email;
-            echo $status;
-            echo $workshop;
-            echo $part;
-            echo $exp; 
-        ?>
-    </h2>
+    <header id="header">
+        <h1 class="indexh1">   التسجيل في ورشات الدورة السابعة والثلاثين لمهرجان المسرح  الجامعي الدولي بالدار البيضاء بكلية الآداب والعلوم الإنسانية بنمسيك  Registration for the Workshops of the 37th International University Theater Festival in Casablanca at the Faculty of Letters and Human Sciences of Ben M'Sik🎭</h1>
+    </header>
+    
+    <div class="card card-body">
+        <div class="container d-flex justify-content-between">
+            <img src="assets/images/UH2logo.jpg" style="height: 150px;">
+            <img src="assets/images/{6D7E9B4C-347D-476E-A8EC-5B0290DA9DB4}.png" style="height: 200px;">
+            <img src="assets/images/festivalLOGO.jpg" style="height: 150px;">
+        </div>
+        <form class="w-60">
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> First Name  </span>                           
+                    <span> الإسم الشخصي  </span>  
+                </label>
+                <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $fname ?>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> Last Name  </span>                           
+                    <span> الإسم العائلي  </span>  
+                </label>
+                <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $lname ?>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> Email  </span>                           
+                    <span>  البريد الإلكتروني  </span>  
+                </label>    
+                <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $email ?>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> Status  </span>                           
+                    <span>   الحالة  </span>  
+                </label>    
+                <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $status ?>" readonly>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> Your expectations?  </span>                           
+                    <span>   توقعاتكم؟  </span>  
+                </label>
+                <textarea class="form-control form-control-lg " style="border-radius: 20px;" rows="3" readonly><?php echo $exp ?></textarea>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; justify-content: space-between;">
+                    <span> Workshop  </span>                           
+                    <span>  الورشة  </span>  
+                </label>    
+                <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $workshop ?>" readonly>
+            </div>
+        </form>
+    </div>
 
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
