@@ -151,7 +151,7 @@ img{
 .carousel {
   max-width: 70rem; 
   margin: -15%;
-  border: #22c8ce solid 2px;
+  /*border: #22c8ce solid 2px;*/
 }
 
 .carousel-inner {

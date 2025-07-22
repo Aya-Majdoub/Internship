@@ -35,8 +35,6 @@
 
     <div class="text-center mt-4">
         <button onclick="downloadPDF()" class="btn btn-success">⬇️ Download as PDF</button>
-    </div>
-    <div class="text-center mt-2">
         <button onclick="sendPDFEmail()" class="btn btn-primary">📧 Send as Email</button>
     </div>
 

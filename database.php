@@ -1,7 +1,7 @@
 <?php
     $db_server = "localhost";
     $db_user = "root";
-    $db_pass = "dbpass@wrkshp2025";  /* dbpass@wrkshp2025 */
+    $db_pass = "";  /* dbpass@wrkshp2025 */
     $db_name = "worshopdb";
     //$conn = "";
 
