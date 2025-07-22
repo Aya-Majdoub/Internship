@@ -12,6 +12,8 @@
     $exp = $_SESSION["exp"] ?? 'No exp stored';
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +36,10 @@
     <div class="text-center mt-4">
         <button onclick="downloadPDF()" class="btn btn-success">⬇️ Download as PDF</button>
     </div>
+    <div class="text-center mt-2">
+        <button onclick="sendPDFEmail()" class="btn btn-primary">📧 Send as Email</button>
+    </div>
+
 
     <div class="card card-body">
         <div  id="pdf-content">
@@ -121,6 +127,32 @@
             };
             html2pdf().set(opt).from(element).save();
         }
+
+        function sendPDFEmail() {
+            const element = document.getElementById('pdf-content');
+            const opt = {
+                margin: 1,
+                filename: 'registration-form.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scrollY: 0, scale: 2, useCORS: true },
+                jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).outputPdf('blob').then(function(pdfBlob) {
+                const formData = new FormData();
+                formData.append('pdf', pdfBlob, 'registration-form.pdf');
+                formData.append('workshopTitle', '<?php echo addslashes($workshop); ?>');
+
+                fetch('sendpdf.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(text => alert(text))
+                .catch(err => alert('Error sending email: ' + err));
+            });
+        }
+
     </script>
 
 </body>
