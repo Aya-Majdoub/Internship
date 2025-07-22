@@ -216,18 +216,33 @@
                     <tr class="collapse" id="<?= $collapseId ?>">
                         <td colspan="10">
                             <div class="card card-body card-body1">
-                                <?php if (mysqli_num_rows($result3) > 0): ?>
-                                    <?php while ($part_info = mysqli_fetch_assoc($result3)) : ?>
-                                        <ul>
-                                            <li><strong><?php echo $part_info["username"] ?></strong> — 
-                                            <?php echo $part_info["user_email"] ?> — 
-                                            Status: <?php echo $part_info["par_status"] ?> — 
-                                            Expectations: <?php echo $part_info["expectations"] ?></li>
-                                        </ul>
-                                    <?php endwhile; ?>
-                                <?php else : ?>
-                                    <p class="text-muted">No participants for this workshop.</p>
-                                <?php endif; ?>
+                                <div id="pdf-content-<?php echo $workshopInfo["workshop_ID"]; ?>">
+                                    <table class="table">
+                                        <thead>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Expectations</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php if (mysqli_num_rows($result3) > 0): ?>
+                                                <?php while ($part_info = mysqli_fetch_assoc($result3)) : ?>
+                                                    <tr>
+                                                        <td><?php echo $part_info["username"] ?></td>
+                                                        <td><?php echo $part_info["user_email"] ?></td>
+                                                        <td><?php echo $part_info["par_status"] ?></td>
+                                                        <td><?php echo $part_info["expectations"] ?></td>
+                                                    </tr>
+                                                <?php endwhile; ?>
+                                            <?php else : ?>
+                                                <p class="text-muted">No participants for this workshop.</p>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button onclick="downloadPDF('pdf-content-<?php echo $workshopInfo['workshop_ID']; ?>')" class="btn btn-success">⬇️ Download list as PDF</button>
+                                </div>
                             </div>
                         </td>
                     </tr>   
@@ -456,7 +471,36 @@
     </div> 
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <!-- javascript -->
     <script src = "assets/JavaScript/main.js"></script>
+
+    <script>
+        function downloadPDF(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) {
+                alert("Element not found.");
+                return;
+            }
+            const opt = {
+            margin: 1,
+            filename: 'participants-list.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            
+            html2canvas: {
+                scrollY: 0,
+                scale: 2,
+                useCORS: true
+            },
+            jsPDF: {
+                unit: 'px',
+                format: [794, 1123],
+                orientation: 'portrait'
+            }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
 body{
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Cairo', sans-serif;
   background-image: url('../images/37thed.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -43,6 +45,7 @@ h1{
   margin-bottom: 5rem;
   padding: 1rem;
 }
+
 .card {
   width: 50%;
   height: 50rem;
@@ -52,4 +55,43 @@ h1{
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+.card-body {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
+.logo-img {
+  max-height: 110px;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.small-img {
+  max-height: 80px;
+}
+
+/* Optional: Make it more responsive */
+@media (max-width: 768px) {
+  .logo-img {
+    max-height: 80px;
+  }
+  .small-img {
+    max-height: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .card{
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .card{
+    width: 100%;
+  }
+} 
 
