@@ -216,8 +216,8 @@
                     <tr class="collapse" id="<?= $collapseId ?>">
                         <td colspan="10">
                             <div class="card card-body card-body1">
-                                <div id="pdf-content-<?php echo $workshopInfo["workshop_ID"]; ?>">
-                                    <table class="table">
+                                <div>
+                                    <table class="table" id="pdf-content-<?php echo $workshopInfo["workshop_ID"]; ?>">
                                         <thead>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -241,7 +241,7 @@
                                     </table>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button onclick="downloadPDF('pdf-content-<?php echo $workshopInfo['workshop_ID']; ?>')" class="btn btn-success">⬇️ Download list as PDF</button>
+                                    <button class="export-btn btn btn-success" data-workshop-id="<?php echo $workshopInfo["workshop_ID"]; ?>">⬇️ Download list</button>
                                 </div>
                             </div>
                         </td>
@@ -471,13 +471,13 @@
     </div> 
     <!-- bootstrap js -->
     <script src = "assets/JavaScript/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="table2excel.js"></script>
 
     <!-- javascript -->
     <script src = "assets/JavaScript/main.js"></script>
 
     <script>
-        function downloadPDF(elementId) {
+        /*function downloadPDF(elementId) {
             const element = document.getElementById(elementId);
             if (!element) {
                 alert("Element not found.");
@@ -485,8 +485,8 @@
             }
             const opt = {
             margin: 1,
-            filename: 'participants-list.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
+            filename: 'participants-list.xlsx',
+            image: { type: 'xlsx', quality: 0.98 },
             
             html2canvas: {
                 scrollY: 0,
@@ -500,7 +500,27 @@
             }
             };
             html2pdf().set(opt).from(element).save();
-        }
+        }*/
+
+            /*document.getElementById('buttonid').addEventListener('click', function(){ //button id 
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll(element)); // table id 
+            });*/
+        
+    </script>
+    <script>
+        document.querySelectorAll('.export-btn').forEach(button => {
+            button.addEventListener('click', function () {
+            const workshopId = this.getAttribute('data-workshop-id');
+            const table = document.getElementById('pdf-content-' + workshopId);
+            if (table) {
+                const table2excel = new Table2Excel();
+                table2excel.export(table);
+            } else {
+                alert("Table not found for workshop ID " + workshopId);
+            }
+            });
+        });
     </script>
 </body>
 </html>

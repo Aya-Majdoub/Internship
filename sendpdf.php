@@ -1,29 +1,6 @@
-<?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $to = filter_var($_POST['to'], FILTER_SANITIZE_EMAIL);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
-    
-    // Make sure the email is valid
-    if (filter_var($to, FILTER_VALIDATE_EMAIL)) {
-        $headers = "From: ayamajdoubacad@gmail.com\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-        
-        // Send the email
-        if (mail($to, $subject, $message, $headers)) {
-            echo "Email sent successfully!";
-        } else {
-            echo "Error in sending email.";
-        }
-    } else {
-        echo "Invalid email address.";
-    }
-}
 
-?>
-
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,31 +24,105 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script>
         document.getElementById("emailForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+            e.preventDefault();
 
-    const to = document.getElementById("to").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
+            const to = document.getElementById("to").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
 
-    // Basic validation
-    if (!to || !subject || !message) {
-        alert("All fields are required!");
-        return;
-    }
+            // Basic validation
+            if (!to || !subject || !message) {
+                alert("All fields are required!");
+                return;
+            }
 
-    const formData = new FormData();
-    formData.append('to', to);
-    formData.append('subject', subject);
-    formData.append('message', message);
+            const formData = new FormData();
+            formData.append('to', to);
+            formData.append('subject', subject);
+            formData.append('message', message);
 
-    fetch('sendpdf.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => alert(data))
-    .catch(error => alert("There was an error sending the email: " + error));
-});
+            fetch('sendpdf.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => alert("There was an error sending the email: " + error));
+        });
     </script>
+</body>
+</html>-->
+
+<?php
+require "vendor/autoload.php";
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    
+
+    $mail = new PHPMailer(true);
+
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+
+    
+
+    $mail->Username = "ayamajdoubacad@gmail.com";
+    $mail->Password = "tqni fces fsce ohwe";
+
+    $mail->setFrom($email, $name);
+    $mail->addAddress("ayamajdoub8@gmail.com", "Aya");
+
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+
+    $mail->send();
+
+    header("Location: sendpdf.php?success=1");
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Contact</h1>
+    
+    <form method="post" action="sendpdf.php">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+        
+        <label for="email">email</label>
+        <input type="email" name="email" id="email" required>
+        
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" id="subject" required>
+        
+        <label for="message">Message</label>
+        <textarea name="message" id="message" required></textarea>
+        
+        <br>
+        
+        <button>Send</button>
+    </form>
+    
 </body>
 </html>
