@@ -51,7 +51,7 @@
                         <span> First Name  </span>                           
                         <span> الإسم الشخصي  </span>  
                     </label>
-                    <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $fname ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $fname ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -59,7 +59,7 @@
                         <span> Last Name  </span>                           
                         <span> الإسم العائلي  </span>  
                     </label>
-                    <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $lname ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $lname ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -67,7 +67,7 @@
                         <span> Email  </span>                           
                         <span>  البريد الإلكتروني  </span>  
                     </label>    
-                    <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $email ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $email ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -75,7 +75,7 @@
                         <span> Status  </span>                           
                         <span>   الحالة  </span>  
                     </label>    
-                    <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $status ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $status ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -83,7 +83,7 @@
                         <span> Your expectations?  </span>                           
                         <span>   توقعاتكم؟  </span>  
                     </label>
-                    <textarea class="form-control form-control-lg " style="border-radius: 20px;" rows="3" readonly><?php echo $exp ?></textarea>
+                    <textarea class="form-control" style="border-radius: 20px;" rows="3" readonly><?php echo $exp ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -91,7 +91,7 @@
                         <span> Workshop  </span>                           
                         <span>  الورشة  </span>  
                     </label>    
-                    <input class="form-control form-control-lg " style="border-radius: 20px;" value="<?php echo $workshop ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $workshop ?>" readonly>
                 </div>
             </form>
         </div>
