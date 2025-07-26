@@ -45,13 +45,13 @@
                 <img src="assets/images/CardHeader.png" class="logo-img">
             </div>
 
-            <form class="w-60" style="padding: 50px;">
+            <form class="w-60" style="padding: 50px;" id="email-content">
                 <div class="form-group" >
                     <label style="display: flex; justify-content: space-between;">
                         <span> First Name  </span>                           
                         <span> الإسم الشخصي  </span>  
                     </label>
-                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $fname ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" name="fname" value="<?php echo $fname ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -59,7 +59,7 @@
                         <span> Last Name  </span>                           
                         <span> الإسم العائلي  </span>  
                     </label>
-                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $lname ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" name="lname" value="<?php echo $lname ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -67,7 +67,7 @@
                         <span> Email  </span>                           
                         <span>  البريد الإلكتروني  </span>  
                     </label>    
-                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $email ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" name="email" value="<?php echo $email ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -75,7 +75,7 @@
                         <span> Status  </span>                           
                         <span>   الحالة  </span>  
                     </label>    
-                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $status ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" name="status" value="<?php echo $status ?>" readonly>
                 </div>
 
                 <div class="form-group">
@@ -83,7 +83,7 @@
                         <span> Your expectations?  </span>                           
                         <span>   توقعاتكم؟  </span>  
                     </label>
-                    <textarea class="form-control" style="border-radius: 20px;" rows="3" readonly><?php echo $exp ?></textarea>
+                    <textarea class="form-control" style="border-radius: 20px;" name="exp" rows="3" readonly><?php echo $exp ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -91,7 +91,7 @@
                         <span> Workshop  </span>                           
                         <span>  الورشة  </span>  
                     </label>    
-                    <input class="form-control" style="border-radius: 20px;" value="<?php echo $workshop ?>" readonly>
+                    <input class="form-control" style="border-radius: 20px;" name="workshop" value="<?php echo $workshop ?>" readonly>
                 </div>
             </form>
         </div>
@@ -103,6 +103,10 @@
 
     <!-- javascript -->
     <script src = "assets/JavaScript/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("jHnhqWYOPcGIK3MDS"); // Replace with your EmailJS public key
+    </script>
 
     <script>
         function downloadPDF() {
@@ -127,28 +131,19 @@
         }
 
         function sendPDFEmail() {
-            const element = document.getElementById('pdf-content');
-            const opt = {
-                margin: 1,
-                filename: 'registration-form.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scrollY: 0, scale: 2, useCORS: true },
-                jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait' }
-            };
+        
+            const form = document.getElementById("email-content");
 
-            html2pdf().set(opt).from(element).outputPdf('blob').then(function(pdfBlob) {
-                const formData = new FormData();
-                formData.append('pdf', pdfBlob, 'registration-form.pdf');
-                formData.append('workshopTitle', '<?php echo addslashes($workshop); ?>');
-
-                fetch('sendpdf.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(text => alert(text))
-                .catch(err => alert('Error sending email: ' + err));
+            emailjs.sendForm("service_8gb5v9j", "template_8k525l1", form)
+            .then(function(response) {
+                alert("Email sent successfully!");
+                console.log("SUCCESS!", response.status, response.text);
+            }, function(error) {
+                alert("Failed to send email.");
+                console.error("FAILED...", error);
             });
+        
+
         }
 
     </script>
